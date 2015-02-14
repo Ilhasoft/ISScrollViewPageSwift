@@ -6,7 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="ISScrollViewPage" customModuleProvider="target">
             <connections>
-                <outlet property="scrollView" destination="nGg-RG-07k" id="VUX-gn-XU8"/>
+                <outlet property="scrollViewPage" destination="nGg-RG-07k" id="Yby-ce-uOH"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

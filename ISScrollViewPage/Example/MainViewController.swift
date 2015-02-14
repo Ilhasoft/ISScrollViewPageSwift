@@ -10,14 +10,14 @@ import UIKit
 
 class MainViewController: UIViewController , ISScrollViewPageDelegate{
 
-    @IBOutlet weak var scrollView:ISScrollViewPage!
+    @IBOutlet weak var scrollViewPage:ISScrollViewPage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        scrollView.scrollViewPageDelegate = self;
-        scrollView.setEnableBounces(false)
-        scrollView.scrollViewPageType = ISScrollViewPageType.ISScrollViewPageHorizontally
+        self.scrollViewPage.scrollViewPageDelegate = self;
+        self.scrollViewPage.setEnableBounces(false)
+        self.scrollViewPage.scrollViewPageType = ISScrollViewPageType.ISScrollViewPageVertically
         
     }
 
@@ -29,7 +29,7 @@ class MainViewController: UIViewController , ISScrollViewPageDelegate{
                            SecondViewController(nibName:"SecondViewController",bundle:nil),
                            ThirdViewController(nibName:"ThirdViewController",bundle:nil)]
         
-        self.scrollView.setViewControllers(controllers)
+        self.scrollViewPage.setViewControllers(controllers)
         
         
         
@@ -46,15 +46,15 @@ class MainViewController: UIViewController , ISScrollViewPageDelegate{
         switch (button.tag) {
             
         case 1:            
-            scrollView.goToIndex(0, animated: true)
+            self.scrollViewPage.goToIndex(0, animated: true)
             break
             
         case 2:
-            scrollView.goToIndex(1, animated: true)
+            self.scrollViewPage.goToIndex(1, animated: true)
             break
             
         case 3:
-            scrollView.goToIndex(2, animated: true)
+            self.scrollViewPage.goToIndex(2, animated: true)
             break
             
         default:
