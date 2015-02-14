@@ -23,6 +23,4 @@ or
 
 self.scrollViewPage.scrollViewPageType = ISScrollViewPageType.ISScrollViewPageVertically
 
-<iframe src="//giphy.com/embed/lXiRrhjp7gsq9hdBe" width="480" height="894" frameBorder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-
 ![alt tag](http://i.giphy.com/lXiRrhjp7gsq9hdBe.gif)
