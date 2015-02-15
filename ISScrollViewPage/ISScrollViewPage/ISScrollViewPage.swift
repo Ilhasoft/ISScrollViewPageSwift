@@ -65,7 +65,6 @@ class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
                 index = 0;
             }
             
-            break
         case .ISScrollViewPageVertically:
         
             var frame = self.frame.height
@@ -76,7 +75,6 @@ class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
                 index = 0;
             }
             
-            break
         }
         
         if index != lastIndex {
@@ -108,16 +106,12 @@ class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
             
             self.setContentOffset(CGPointMake(CGFloat(widthOfContentOffset), 0), animated: animated)
             
-            break
-            
         case .ISScrollViewPageVertically:
             
             var frameHeight = Int(self.frame.height)
             var heightOfContentOffset = index * frameHeight
             
             self.setContentOffset(CGPointMake(0, CGFloat(heightOfContentOffset)), animated: animated)
-            
-            break
             
         }
         
@@ -148,7 +142,7 @@ class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
         
         var frame:CGRect = self.frame
         
-        for var i = 0 ; i < self.viewControllers?.count ; i++ {
+        for i in 0...self.viewControllers!.count-1 {
 
             var viewController = self.viewControllers![i]
             
@@ -166,16 +160,12 @@ class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
                     
                     self.contentSize = CGSizeMake(self.frame.size.width * CGFloat(self.viewControllers!.count), self.frame.size.height)
                     
-                    break
-                    
                 case .ISScrollViewPageVertically:
                     frame.origin.y = CGFloat(self.frame.size.height * CGFloat(i));
                     frame.size = self.frame.size
                     frame.origin.x = 0
                     
                     self.contentSize = CGSizeMake(self.frame.size.width,self.frame.size.height * CGFloat(self.viewControllers!.count))
-                    
-                    break
                 }
             
             view.frame = frame

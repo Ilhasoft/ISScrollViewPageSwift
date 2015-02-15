@@ -18,27 +18,27 @@
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nGg-RG-07k" customClass="ISScrollViewPage" customModule="ISScrollViewPage" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                 </scrollView>
-                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zWi-0y-RfJ">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zWi-0y-RfJ">
                     <rect key="frame" x="113" y="449" width="94" height="30"/>
-                    <state key="normal" title="Go to Index 1">
+                    <state key="normal" title="Go to Index 0">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="buttonPressed:" destination="-1" eventType="touchUpInside" id="1e9-4D-c1h"/>
                     </connections>
                 </button>
-                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OY1-Zy-R6k">
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OY1-Zy-R6k">
                     <rect key="frame" x="113" y="484" width="94" height="30"/>
-                    <state key="normal" title="Go to Index 2">
+                    <state key="normal" title="Go to Index 1">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="buttonPressed:" destination="-1" eventType="touchUpInside" id="Ntn-Mk-ztj"/>
                     </connections>
                 </button>
-                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="feu-ZT-7Yq">
+                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="feu-ZT-7Yq">
                     <rect key="frame" x="113" y="519" width="94" height="30"/>
-                    <state key="normal" title="Go to Index 3">
+                    <state key="normal" title="Go to Index 2">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>

@@ -17,7 +17,7 @@ class MainViewController: UIViewController , ISScrollViewPageDelegate{
 
         self.scrollViewPage.scrollViewPageDelegate = self;
         self.scrollViewPage.setEnableBounces(false)
-        self.scrollViewPage.scrollViewPageType = ISScrollViewPageType.ISScrollViewPageVertically
+        self.scrollViewPage.scrollViewPageType = ISScrollViewPageType.ISScrollViewPageHorizontally
         
     }
 
@@ -45,17 +45,14 @@ class MainViewController: UIViewController , ISScrollViewPageDelegate{
         
         switch (button.tag) {
             
-        case 1:            
+        case 0:
             self.scrollViewPage.goToIndex(0, animated: true)
-            break
+            
+        case 1:
+            self.scrollViewPage.goToIndex(1, animated: true)
             
         case 2:
-            self.scrollViewPage.goToIndex(1, animated: true)
-            break
-            
-        case 3:
             self.scrollViewPage.goToIndex(2, animated: true)
-            break
             
         default:
             break
