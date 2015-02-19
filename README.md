@@ -1,38 +1,68 @@
 # ISScrollViewPageSwift
 
-Easy implementation if you need put yours UIViewControllers inside an UIScrollView navigation style.
+Easy scrollView page viewer implementation written in Swift.
+
+<p align="center">
+  <img align="center" src="ISScrollViewPage/horizontalExample.gif" alt="...">
+  <img align="center" src="ISScrollViewPage/verticalExample.gif" alt="...">
+</p>
 
 ## Current Version
 
-Version: 0.1.4
+Version: 0.0.1
 
 ## How to use it?
 
-You can choice Horizontally navigation or Vertically navigation.
+Firts of all, you need to know:
 
-- How to set my view controllers?
+- You don't need to create a NIB file to use ISScrollViewPageSwift.
+- You need to choose the orientation of ISScrollViewPageSwift (Horizontally or Vertically)
 
-```swift
-var controllers = [FirstViewController(nibName:"FirstViewController",bundle:nil),
-                   SecondViewController(nibName:"SecondViewController",bundle:nil),
-                   ThirdViewController(nibName:"ThirdViewController",bundle:nil)]
+### NIB implementation
 
-self.scrollViewPage.setViewControllers(controllers)
-```        
-
-- Set Navigation Type
+Only override viewDidLoad() func:
 
 ```swift
-self.scrollViewPage.scrollViewPageType = ISScrollViewPageType.ISScrollViewPageHorizontally
+class MainViewController: UIViewController , ISScrollViewPageDelegate{
+        
+        @IBOutlet weak var scrollViewPage:ISScrollViewPage!
+
+        override func viewDidLoad() {
+                super.viewDidLoad()
+                self.scrollViewPage.scrollViewPageDelegate = self;
+                self.scrollViewPage.scrollViewPageType = ISScrollViewPageType.ISScrollViewPageVertically
+                self.scrollViewPage.setViewControllers(controllers)
+        }
+}
 ```
 
-![alt tag](http://media.giphy.com/media/3xz2BMFd73WBt7YhiM/giphy.gif)
+### No NIB implementation
 
-or 
+Only override loadView() func and set self.view:
 
-self.scrollViewPage.scrollViewPageType = ISScrollViewPageType.ISScrollViewPageVertically
+```swift
+override func loadView() {
+        self.scrollViewPage = ISScrollViewPage(frame: UIScreen.mainScreen().applicationFrame)
+        self.scrollViewPage!.scrollViewPageType = ISScrollViewPageType.ISScrollViewPageVertically
+        self.scrollViewPage!.setViewControllers(controllers)
+        self.view = self.scrollViewPage
+}
+```
+### Customization
 
-![alt tag](http://i.giphy.com/lXiRrhjp7gsq9hdBe.gif)
+```
+scrollViewPageType (ISScrollViewPageVertically or ISScrollViewPageType.ISScrollViewPageHorizontally)
+bounces (true or false)
+```
+
+## Requirements
+
+* iOS 7.0+
+* Xcode 6.1
+
+## TODO
+- [ ] Add More Customizations
+- [ ] Some refactorings
 
 ## Contact
 
