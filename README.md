@@ -57,8 +57,8 @@ bounces (true or false)
 
 ## Requirements
 
-* iOS 7.0+
-* Xcode 6.1
+* iOS 8.0+
+* Xcode 6.0
 
 ## TODO
 - [ ] Add More Customizations
