@@ -11,6 +11,19 @@ Easy scrollView page viewer implementation written in Swift.
 
 Version: 0.0.1
 
+## How to install it?
+
+[CocoaPods](http://cocoapods.org) is the easiest way to install ISScrollViewPageSwift. Run ```pod search ISScrollViewPageSwift``` to search for the latest version. Then, copy and paste the ```pod``` line to your ```Podfile```. Your podfile should look like:
+
+```
+platform :ios, '8.0'
+pod 'ISScrollViewPageSwift'
+```
+
+Finally, install it by running ```pod install```.
+
+If you don't use CocoaPods, only import ```ISScrollViewPage.swift``` to your project.
+
 ## How to use it?
 
 Firts of all, you need to know:
