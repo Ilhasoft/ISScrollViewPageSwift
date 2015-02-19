@@ -9,16 +9,11 @@
 import UIKit
 
 enum ISScrollViewPageType {
-    
     case ISScrollViewPageHorizontally, ISScrollViewPageVertically
-    
-    
 }
 
 protocol ISScrollViewPageDelegate {
-    
     func scrollViewPageDidChanged(scrollViewPage:ISScrollViewPage,index:Int);
-    
 }
 
 class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
@@ -29,24 +24,24 @@ class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
     var enableBouces:Bool?
     var scrollViewPageType:ISScrollViewPageType?
     
-    override init() {
-        super.init()
-        
-    }
+    //MARK: Life Cycle
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        super.delegate = self
-        self.viewControllers = []
-        self.scrollViewPageType = ISScrollViewPageType.ISScrollViewPageHorizontally
+        self.initScrollView()
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-
+        self.initScrollView()
     }
 
-    //Delegate
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setupLayout(scrollViewPageType!)
+    }
+    
+    //MARK: UIScrollViewDelegate
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         
@@ -86,7 +81,7 @@ class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
     }
     
     
-    //Public Functions
+    //MARK: Public Functions
     
     func goToIndex(index:Int, animated:Bool){
         
@@ -124,19 +119,20 @@ class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
     }
     
     func setViewControllers(viewControllers:[UIViewController]){
-        
         self.viewControllers! = viewControllers;
-        setupLayout(scrollViewPageType!)
-        
     }
 
     func setEnableBounces(enableBounces:Bool){
-        
         self.bounces = enableBounces
-        
     }
     
-    //Private Functions
+    //MARK: Private Functions
+    
+    private func initScrollView() {
+        super.delegate = self
+        self.viewControllers = []
+        self.scrollViewPageType = ISScrollViewPageType.ISScrollViewPageHorizontally
+    }
     
     private func setupLayout (scrollViewPageType:ISScrollViewPageType){
         

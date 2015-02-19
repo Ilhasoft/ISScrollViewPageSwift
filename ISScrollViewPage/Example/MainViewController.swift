@@ -17,24 +17,18 @@ class MainViewController: UIViewController , ISScrollViewPageDelegate{
 
         self.scrollViewPage.scrollViewPageDelegate = self;
         self.scrollViewPage.setEnableBounces(false)
-        self.scrollViewPage.scrollViewPageType = ISScrollViewPageType.ISScrollViewPageHorizontally
+        self.scrollViewPage.scrollViewPageType = ISScrollViewPageType.ISScrollViewPageVertically
         
-    }
-
-    override func viewDidLayoutSubviews() {
-        
-        super.viewDidLayoutSubviews()
         
         var controllers = [FirstViewController(nibName:"FirstViewController",bundle:nil),
-                           SecondViewController(nibName:"SecondViewController",bundle:nil),
-                           ThirdViewController(nibName:"ThirdViewController",bundle:nil)]
+            SecondViewController(nibName:"SecondViewController",bundle:nil),
+            ThirdViewController(nibName:"ThirdViewController",bundle:nil)]
         
         self.scrollViewPage.setViewControllers(controllers)
         
         
-        
     }
-    
+
     func scrollViewPageDidChanged(scrollViewPage: ISScrollViewPage, index: Int) {
         println("You are at index: \(index)")
     }

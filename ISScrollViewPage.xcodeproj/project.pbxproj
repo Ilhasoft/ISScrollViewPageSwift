@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		651C5B7D1A96207B008E2811 /* MainNoNIBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651C5B7C1A96207B008E2811 /* MainNoNIBViewController.swift */; };
 		652478F51A8D892900CA9418 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652478F41A8D892900CA9418 /* AppDelegate.swift */; };
 		652478FC1A8D892900CA9418 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 652478FB1A8D892900CA9418 /* Images.xcassets */; };
 		652478FF1A8D892900CA9418 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 652478FD1A8D892900CA9418 /* LaunchScreen.xib */; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		651C5B7C1A96207B008E2811 /* MainNoNIBViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainNoNIBViewController.swift; path = Example/MainNoNIBViewController.swift; sourceTree = "<group>"; };
 		652478EF1A8D892900CA9418 /* ISScrollViewPage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ISScrollViewPage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		652478F31A8D892900CA9418 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		652478F41A8D892900CA9418 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 			children = (
 				652479451A8FE11900CA9418 /* MainViewController.swift */,
 				652479461A8FE11900CA9418 /* MainViewController.xib */,
+				651C5B7C1A96207B008E2811 /* MainNoNIBViewController.swift */,
 			);
 			name = Example;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				652479421A8FE10400CA9418 /* SecondViewController.swift in Sources */,
+				651C5B7D1A96207B008E2811 /* MainNoNIBViewController.swift in Sources */,
 				652478F51A8D892900CA9418 /* AppDelegate.swift in Sources */,
 				652479431A8FE10400CA9418 /* ThirdViewController.swift in Sources */,
 				652479471A8FE11900CA9418 /* MainViewController.swift in Sources */,
@@ -449,6 +453,7 @@
 				652479101A8D892900CA9418 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		652479111A8D892900CA9418 /* Build configuration list for PBXNativeTarget "ISScrollViewPageTests" */ = {
 			isa = XCConfigurationList;
@@ -457,6 +462,7 @@
 				652479131A8D892900CA9418 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
