@@ -9,7 +9,7 @@ Easy scrollView page viewer implementation written in Swift.
 
 ## Current Version
 
-Version: 0.0.1
+Version: 0.0.2
 
 ## How to install it?
 
