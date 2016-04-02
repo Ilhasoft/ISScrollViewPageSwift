@@ -17,25 +17,37 @@ class MainViewController: UIViewController , ISScrollViewPageDelegate{
 
         self.scrollViewPage.scrollViewPageDelegate = self;
         self.scrollViewPage.setEnableBounces(false)
-        self.scrollViewPage.scrollViewPageType = ISScrollViewPageType.ISScrollViewPageVertically
+        self.scrollViewPage.setPaging(false)
+        self.scrollViewPage.scrollViewPageType = ISScrollViewPageType.ISScrollViewPageHorizontally
         
         
-        var controllers = [FirstViewController(nibName:"FirstViewController",bundle:nil),
-            SecondViewController(nibName:"SecondViewController",bundle:nil),
-            ThirdViewController(nibName:"ThirdViewController",bundle:nil)]
+//        var controllers = [FirstViewController(nibName:"FirstViewController",bundle:nil),
+//            SecondViewController(nibName:"SecondViewController",bundle:nil),
+//            ThirdViewController(nibName:"ThirdViewController",bundle:nil)]
+//        
+//        self.scrollViewPage.setControllers(controllers)
         
-        self.scrollViewPage.setViewControllers(controllers)
         
+        let view1:UIView = UIView(frame: UIScreen.mainScreen().bounds)
+        view1.backgroundColor = UIColor.yellowColor()
+        
+        let view2:UIView = UIView(frame: UIScreen.mainScreen().bounds)
+        view2.backgroundColor = UIColor.greenColor()
+        
+        let view3:UIView = UIView(frame: UIScreen.mainScreen().bounds)
+        view3.backgroundColor = UIColor.blackColor()
+        
+        self.scrollViewPage?.setCustomViews([view1,view2,view3])
         
     }
 
     func scrollViewPageDidChanged(scrollViewPage: ISScrollViewPage, index: Int) {
-        println("You are at index: \(index)")
+        print("You are at index: \(index)")
     }
 
     @IBAction func buttonPressed(sender: AnyObject) {
         
-        var button = sender as UIButton
+        let button = sender as! UIButton
         
         switch (button.tag) {
             

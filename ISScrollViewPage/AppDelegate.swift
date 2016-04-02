@@ -21,8 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let frame = UIScreen.mainScreen().bounds
         window = UIWindow(frame: frame)
         
-        window!.rootViewController = MainNoNIBViewController()
-//        window!.rootViewController = initialViewController
+//        window!.rootViewController = MainNoNIBViewController()
+        window!.rootViewController = initialViewController
         window!.makeKeyAndVisible()
         
         return true

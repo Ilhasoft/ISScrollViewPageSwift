@@ -32,7 +32,7 @@ class MainNoNIBViewController: UIViewController, ISScrollViewPageDelegate {
             SecondViewController(nibName:"SecondViewController",bundle:nil),
             ThirdViewController(nibName:"ThirdViewController",bundle:nil)]
         
-        self.scrollViewPage!.setViewControllers(controllers)
+        self.scrollViewPage!.setControllers(controllers)
         
         self.view = self.scrollViewPage
         
