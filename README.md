@@ -58,6 +58,7 @@ override func loadView() {
         self.scrollViewPage = ISScrollViewPage(frame: UIScreen.mainScreen().applicationFrame)
         self.scrollViewPage!.scrollViewPageType = ISScrollViewPageType.ISScrollViewPageVertically
         self.scrollViewPage!.setViewControllers(controllers)
+	//In Version 0.0.4 you can set UIViews - use setCustomViews method
         self.view = self.scrollViewPage
 }
 ```
