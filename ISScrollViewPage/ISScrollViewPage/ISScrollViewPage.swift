@@ -48,7 +48,6 @@ class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         
-        var result:Int
         var index:Int
         
         switch (self.scrollViewPageType!) {
@@ -150,7 +149,6 @@ class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
     
     private func setupLayout (scrollViewPageType:ISScrollViewPageType){
         
-        var frame:CGRect = self.frame
         var list:[AnyObject] = []
         
         if !viewControllers!.isEmpty {
