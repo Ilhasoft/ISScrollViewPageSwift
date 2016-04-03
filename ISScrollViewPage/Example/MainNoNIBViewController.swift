@@ -28,7 +28,7 @@ class MainNoNIBViewController: UIViewController, ISScrollViewPageDelegate {
         self.scrollViewPage!.scrollViewPageType = ISScrollViewPageType.ISScrollViewPageVertically
         
         
-        var controllers = [FirstViewController(nibName:"FirstViewController",bundle:nil),
+        let controllers = [FirstViewController(nibName:"FirstViewController",bundle:nil),
             SecondViewController(nibName:"SecondViewController",bundle:nil),
             ThirdViewController(nibName:"ThirdViewController",bundle:nil)]
         
@@ -39,7 +39,7 @@ class MainNoNIBViewController: UIViewController, ISScrollViewPageDelegate {
     }
     
     func scrollViewPageDidChanged(scrollViewPage: ISScrollViewPage, index: Int) {
-        println("index : \(index)")
+        print("index : \(index)")
     }
 
 
