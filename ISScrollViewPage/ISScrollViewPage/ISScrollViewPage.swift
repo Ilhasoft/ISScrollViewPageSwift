@@ -8,21 +8,21 @@
 
 import UIKit
 
-enum ISScrollViewPageType {
+public enum ISScrollViewPageType {
     case ISScrollViewPageHorizontally
     case ISScrollViewPageVertically
 }
 
-@objc protocol ISScrollViewPageDelegate {
+@objc public protocol ISScrollViewPageDelegate {
     func scrollViewPageDidChanged(scrollViewPage:ISScrollViewPage,index:Int);
     optional func scrollViewPageDidScroll(scrollView:UIScrollView);
 }
 
-class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
+public class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
     
     var viewControllers:[UIViewController]?
     var views:[UIView]?
-    var scrollViewPageDelegate:ISScrollViewPageDelegate?
+    public var scrollViewPageDelegate:ISScrollViewPageDelegate?
     var lastIndex = 0
     var enableBouces:Bool?
     var enablePaging:Bool?
@@ -32,7 +32,7 @@ class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
     
     //MARK: Life Cycle
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.isLoaded = false
         self.initScrollView()
@@ -44,7 +44,7 @@ class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
         self.initScrollView()
     }
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         if isLoaded == false{
             setupLayout(scrollViewPageType!)
@@ -54,13 +54,13 @@ class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
     
     //MARK: UIScrollViewDelegate
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    public func scrollViewDidScroll(scrollView: UIScrollView) {
         if let scrollViewPageDelegate = self.scrollViewPageDelegate {
             scrollViewPageDelegate.scrollViewPageDidScroll!(scrollView)
         }
     }
     
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    public func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         
         var index:Int
         
@@ -99,7 +99,7 @@ class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
     
     //MARK: Public Functions
     
-    func goToIndex(index:Int, animated:Bool){
+    public func goToIndex(index:Int, animated:Bool){
         
         let countList = self.viewControllers?.count > 0 ? self.viewControllers?.count : self.views?.count
         
@@ -136,34 +136,34 @@ class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
         
     }
     
-    func setFillContent(fillContent:Bool) {
+    public func setFillContent(fillContent:Bool) {
         self.fillContent = fillContent
         setupLayout(self.scrollViewPageType)
     }
     
-    func setControllers(viewControllers:[UIViewController]){
+    public func setControllers(viewControllers:[UIViewController]){
         self.viewControllers! = viewControllers;
         setupLayout(self.scrollViewPageType)
     }
     
-    func addCustomView(view:UIView) {
+    public func addCustomView(view:UIView) {
         self.views?.append(view)
         setupLayout(self.scrollViewPageType)
     }
     
-    func setCustomViews(views:[UIView]){
+    public func setCustomViews(views:[UIView]){
         self.views = views
         setupLayout(self.scrollViewPageType)
     }
     
-    func removeCustomViewAtIndex(index:Int) {
+    public func removeCustomViewAtIndex(index:Int) {
         if views != nil && !views!.isEmpty{
             self.views!.removeAtIndex(index)
         }
         setupLayout(self.scrollViewPageType)
     }
     
-    func removeCustomView(mediaView:UIView) {
+    public func removeCustomView(mediaView:UIView) {
         if views != nil && !views!.isEmpty{
             if let index = (views!).indexOf(mediaView) {
                 self.views!.removeAtIndex(index)
@@ -172,11 +172,11 @@ class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
         setupLayout(self.scrollViewPageType)
     }
     
-    func setEnableBounces(enableBounces:Bool){
+    public func setEnableBounces(enableBounces:Bool){
         self.bounces = enableBounces
     }
     
-    func setPaging(pagingEnabled:Bool){
+    public func setPaging(pagingEnabled:Bool){
         self.enablePaging = pagingEnabled
     }
     
