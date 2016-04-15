@@ -8,8 +8,8 @@
 
 import UIKit
 
-public enum ISScrollViewPageType {
-    case ISScrollViewPageHorizontally
+@objc public enum ISScrollViewPageType:Int {
+    case ISScrollViewPageHorizontally = 1
     case ISScrollViewPageVertically
 }
 
@@ -28,7 +28,19 @@ public class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
     var enablePaging:Bool?
     var fillContent:Bool?
     var scrollViewPageType:ISScrollViewPageType!
+
     var isLoaded:Bool!
+
+    public func getScrollViewPageTypeFromInt(value:Int) -> ISScrollViewPageType {
+        switch(value) {
+        case 1:
+            return .ISScrollViewPageHorizontally
+        case 2:
+            return .ISScrollViewPageVertically
+        default:
+            return .ISScrollViewPageHorizontally
+        }
+    }
     
     //MARK: Life Cycle
     
@@ -178,6 +190,10 @@ public class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
     
     public func setPaging(pagingEnabled:Bool){
         self.enablePaging = pagingEnabled
+    }
+
+    public func setScrollViewPageType(value:Int) {
+        self.scrollViewPageType = getScrollViewPageTypeFromInt(value);
     }
     
     //MARK: Private Functions
