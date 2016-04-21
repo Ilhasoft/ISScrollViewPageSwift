@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios
   s.ios.deployment_target = '8.0'
-  s.source       = { :git => "https://github.com/Ilhasoft/ISScrollViewPageSwift.git", :tag => "0.0.4" }
+  s.source       = { :git => "https://github.com/Ilhasoft/ISScrollViewPageSwift.git", :tag => "0.0.5" }
   
   s.source_files  = "ISScrollViewPage/ISScrollViewPage/*"
   s.requires_arc = true
