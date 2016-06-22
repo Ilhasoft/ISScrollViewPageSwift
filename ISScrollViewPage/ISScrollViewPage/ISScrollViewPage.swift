@@ -89,7 +89,7 @@ public class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
         }
         
         if index != lastIndex {
-            scrollViewPageDelegate!.scrollViewPageDidChanged(self, index: index)
+            scrollViewPageDelegate?.scrollViewPageDidChanged(self, index: index)
         }
         
         lastIndex = index
@@ -129,7 +129,7 @@ public class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
         }
         
         if index != lastIndex {
-            scrollViewPageDelegate!.scrollViewPageDidChanged(self, index: index)
+            scrollViewPageDelegate?.scrollViewPageDidChanged(self, index: index)
         }
         
         lastIndex = index
