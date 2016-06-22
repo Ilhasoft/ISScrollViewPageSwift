@@ -8,8 +8,8 @@
 
 import UIKit
 
-public enum ISScrollViewPageType {
-    case ISScrollViewPageHorizontally
+@objc public enum ISScrollViewPageType:Int {
+    case ISScrollViewPageHorizontally = 1
     case ISScrollViewPageVertically
 }
 
@@ -20,15 +20,26 @@ public enum ISScrollViewPageType {
 
 public class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
     
-    var viewControllers:[UIViewController]?
-    var views:[UIView]?
+    public var viewControllers:[UIViewController]?
+    public var views:[UIView]?
     public var scrollViewPageDelegate:ISScrollViewPageDelegate?
     var lastIndex = 0
     var enableBouces:Bool?
     var enablePaging:Bool?
     var fillContent:Bool?
-    var scrollViewPageType:ISScrollViewPageType!
+    public var scrollViewPageType:ISScrollViewPageType!
     var isLoaded:Bool!
+
+    public func getScrollViewPageTypeFromInt(value:Int) -> ISScrollViewPageType {
+        switch(value) {
+        case 1:
+            return .ISScrollViewPageHorizontally
+        case 2:
+            return .ISScrollViewPageVertically
+        default:
+            return .ISScrollViewPageHorizontally
+        }
+    }
     
     //MARK: Life Cycle
     
@@ -38,7 +49,7 @@ public class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
         self.initScrollView()
     }
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         self.isLoaded = false
         self.initScrollView()
@@ -178,6 +189,10 @@ public class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
     
     public func setPaging(pagingEnabled:Bool){
         self.enablePaging = pagingEnabled
+    }
+
+    public func setScrollViewPageType(value:Int) {
+        self.scrollViewPageType = getScrollViewPageTypeFromInt(value);
     }
     
     //MARK: Private Functions
