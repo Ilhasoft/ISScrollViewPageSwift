@@ -189,6 +189,11 @@ public class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
         }
         setupLayout(self.scrollViewPageType)
     }
+
+    public func removeAllViews() {
+        views?.removeAll()
+        viewControllers?.removeAll()
+    }
     
     public func setEnableBounces(enableBounces:Bool){
         self.bounces = enableBounces
