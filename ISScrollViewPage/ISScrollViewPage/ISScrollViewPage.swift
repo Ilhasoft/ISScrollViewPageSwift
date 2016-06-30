@@ -23,6 +23,11 @@ public class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
     public var viewControllers:[UIViewController]?
     public var views:[UIView]?
     public var scrollViewPageDelegate:ISScrollViewPageDelegate?
+    public var count: Int {
+        get {
+            return views != nil ? views!.count : 0
+        }
+    }
     var lastIndex = 0
     var enableBouces:Bool?
     var enablePaging:Bool?
