@@ -25,7 +25,9 @@ public class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
     public var scrollViewPageDelegate:ISScrollViewPageDelegate?
     public var count: Int {
         get {
-            return views != nil ? views!.count : 0
+            let viewsCount = views != nil ? views!.count : 0
+            let controllersCount = viewControllers != nil ? viewControllers!.count : 0
+            return viewsCount + controllersCount
         }
     }
     var lastIndex = 0
