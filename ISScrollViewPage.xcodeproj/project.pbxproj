@@ -11,7 +11,6 @@
 		652478F51A8D892900CA9418 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652478F41A8D892900CA9418 /* AppDelegate.swift */; };
 		652478FC1A8D892900CA9418 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 652478FB1A8D892900CA9418 /* Images.xcassets */; };
 		652478FF1A8D892900CA9418 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 652478FD1A8D892900CA9418 /* LaunchScreen.xib */; };
-		6524790B1A8D892900CA9418 /* ISScrollViewPageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6524790A1A8D892900CA9418 /* ISScrollViewPageTests.swift */; };
 		652479381A8FE0F500CA9418 /* ISScrollViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652479371A8FE0F500CA9418 /* ISScrollViewPage.swift */; };
 		6524793F1A8FE10400CA9418 /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 652479391A8FE10400CA9418 /* FirstViewController.xib */; };
 		652479401A8FE10400CA9418 /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6524793A1A8FE10400CA9418 /* SecondViewController.xib */; };
@@ -41,8 +40,6 @@
 		652478FB1A8D892900CA9418 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		652478FE1A8D892900CA9418 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		652479041A8D892900CA9418 /* ISScrollViewPageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ISScrollViewPageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		652479091A8D892900CA9418 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6524790A1A8D892900CA9418 /* ISScrollViewPageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISScrollViewPageTests.swift; sourceTree = "<group>"; };
 		652479371A8FE0F500CA9418 /* ISScrollViewPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ISScrollViewPage.swift; path = ISScrollViewPage/ISScrollViewPage.swift; sourceTree = "<group>"; };
 		652479391A8FE10400CA9418 /* FirstViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FirstViewController.xib; path = Controllers/FirstViewController.xib; sourceTree = "<group>"; };
 		6524793A1A8FE10400CA9418 /* SecondViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SecondViewController.xib; path = Controllers/SecondViewController.xib; sourceTree = "<group>"; };
@@ -76,7 +73,6 @@
 			isa = PBXGroup;
 			children = (
 				652478F11A8D892900CA9418 /* ISScrollViewPage */,
-				652479071A8D892900CA9418 /* ISScrollViewPageTests */,
 				652478F01A8D892900CA9418 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -108,23 +104,6 @@
 			isa = PBXGroup;
 			children = (
 				652478F31A8D892900CA9418 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		652479071A8D892900CA9418 /* ISScrollViewPageTests */ = {
-			isa = PBXGroup;
-			children = (
-				6524790A1A8D892900CA9418 /* ISScrollViewPageTests.swift */,
-				652479081A8D892900CA9418 /* Supporting Files */,
-			);
-			path = ISScrollViewPageTests;
-			sourceTree = "<group>";
-		};
-		652479081A8D892900CA9418 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				652479091A8D892900CA9418 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -210,9 +189,12 @@
 				TargetAttributes = {
 					652478EE1A8D892900CA9418 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = ZE9A9HAM9Z;
+						LastSwiftMigration = 0800;
 					};
 					652479031A8D892900CA9418 = {
 						CreatedOnToolsVersion = 6.1.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 652478EE1A8D892900CA9418;
 					};
 				};
@@ -278,7 +260,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6524790B1A8D892900CA9418 /* ISScrollViewPageTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,10 +367,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = ZE9A9HAM9Z;
 				INFOPLIST_FILE = ISScrollViewPage/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ilhasoft.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -397,10 +380,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = ZE9A9HAM9Z;
 				INFOPLIST_FILE = ISScrollViewPage/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ilhasoft.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -420,6 +405,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ilhasoft.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ISScrollViewPage.app/ISScrollViewPage";
 			};
 			name = Debug;
@@ -436,6 +422,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ilhasoft.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ISScrollViewPage.app/ISScrollViewPage";
 			};
 			name = Release;

@@ -7,23 +7,52 @@
 //
 
 import UIKit
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
+fileprivate func >= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l >= r
+  default:
+    return !(lhs < rhs)
+  }
+}
+
 
 @objc public enum ISScrollViewPageType:Int {
-    case ISScrollViewPageHorizontally = 1
-    case ISScrollViewPageVertically
+    case isScrollViewPageHorizontally = 1
+    case isScrollViewPageVertically
 }
 
 @objc public protocol ISScrollViewPageDelegate {
-    func scrollViewPageDidChanged(scrollViewPage:ISScrollViewPage,index:Int);
-    optional func scrollViewPageDidScroll(scrollView:UIScrollView);
+    func scrollViewPageDidChanged(_ scrollViewPage:ISScrollViewPage,index:Int);
+    @objc optional func scrollViewPageDidScroll(_ scrollView:UIScrollView);
 }
 
-public class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
+open class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
     
-    public var viewControllers:[UIViewController]?
-    public var views:[UIView]?
-    public var scrollViewPageDelegate:ISScrollViewPageDelegate?
-    public var count: Int {
+    open var viewControllers:[UIViewController]?
+    open var views:[UIView]?
+    open var scrollViewPageDelegate:ISScrollViewPageDelegate?
+    open var count: Int {
         get {
             let viewsCount = views != nil ? views!.count : 0
             let controllersCount = viewControllers != nil ? viewControllers!.count : 0
@@ -34,17 +63,17 @@ public class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
     var enableBouces:Bool?
     var enablePaging:Bool?
     var fillContent:Bool?
-    public var scrollViewPageType:ISScrollViewPageType!
+    open var scrollViewPageType:ISScrollViewPageType!
     var isLoaded:Bool!
 
-    public func getScrollViewPageTypeFromInt(value:Int) -> ISScrollViewPageType {
+    open func getScrollViewPageTypeFromInt(_ value:Int) -> ISScrollViewPageType {
         switch(value) {
         case 1:
-            return .ISScrollViewPageHorizontally
+            return .isScrollViewPageHorizontally
         case 2:
-            return .ISScrollViewPageVertically
+            return .isScrollViewPageVertically
         default:
-            return .ISScrollViewPageHorizontally
+            return .isScrollViewPageHorizontally
         }
     }
     
@@ -62,7 +91,7 @@ public class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
         self.initScrollView()
     }
     
-    override public func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
         if isLoaded == false{
             setupLayout(scrollViewPageType!)
@@ -72,19 +101,19 @@ public class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
     
     //MARK: UIScrollViewDelegate
     
-    public func scrollViewDidScroll(scrollView: UIScrollView) {
+    open func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if let scrollViewPageDelegate = self.scrollViewPageDelegate {
             scrollViewPageDelegate.scrollViewPageDidScroll?(scrollView)
         }
     }
     
-    public func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    open func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         
         var index:Int
         
         switch (self.scrollViewPageType!) {
             
-        case .ISScrollViewPageHorizontally:
+        case .isScrollViewPageHorizontally:
             
             let frame = self.frame.width
             
@@ -94,7 +123,7 @@ public class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
                 index = 0;
             }
             
-        case .ISScrollViewPageVertically:
+        case .isScrollViewPageVertically:
             
             let frame = self.frame.height
             
@@ -117,7 +146,7 @@ public class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
     
     //MARK: Public Functions
     
-    public func goToIndex(index:Int, animated:Bool){
+    open func goToIndex(_ index:Int, animated:Bool){
         
         let countList = self.viewControllers?.count > 0 ? self.viewControllers?.count : self.views?.count
         
@@ -130,19 +159,19 @@ public class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
         
         switch(self.scrollViewPageType!){
             
-        case .ISScrollViewPageHorizontally:
+        case .isScrollViewPageHorizontally:
             
             let frameWidth = Int(self.frame.width)
             let widthOfContentOffset = index * frameWidth
             
-            self.setContentOffset(CGPointMake(CGFloat(widthOfContentOffset), 0), animated: animated)
+            self.setContentOffset(CGPoint(x: CGFloat(widthOfContentOffset), y: 0), animated: animated)
             
-        case .ISScrollViewPageVertically:
+        case .isScrollViewPageVertically:
             
             let frameHeight = Int(self.frame.height)
             let heightOfContentOffset = index * frameHeight
             
-            self.setContentOffset(CGPointMake(0, CGFloat(heightOfContentOffset)), animated: animated)
+            self.setContentOffset(CGPoint(x: 0, y: CGFloat(heightOfContentOffset)), animated: animated)
             
         }
         
@@ -154,76 +183,76 @@ public class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
         
     }
     
-    public func setFillContent(fillContent:Bool) {
+    open func setFillContent(_ fillContent:Bool) {
         self.fillContent = fillContent
         setupLayout(self.scrollViewPageType)
     }
     
-    public func setControllers(viewControllers:[UIViewController]){
+    open func setControllers(_ viewControllers:[UIViewController]){
         self.viewControllers! = viewControllers;
         setupLayout(self.scrollViewPageType)
     }
     
-    public func addCustomView(view:UIView) {
+    open func addCustomView(_ view:UIView) {
         self.views?.append(view)
         setupLayout(self.scrollViewPageType)
     }
     
-    public func setCustomViews(views:[UIView]){
+    open func setCustomViews(_ views:[UIView]){
         self.views = views
         setupLayout(self.scrollViewPageType)
     }
     
-    public func removeCustomViewAtIndex(index:Int) {
+    open func removeCustomViewAtIndex(_ index:Int) {
         if views != nil && !views!.isEmpty{
-            self.views!.removeAtIndex(index)
+            self.views!.remove(at: index)
         }
         setupLayout(self.scrollViewPageType)
     }
     
-    public func removeCustomView(mediaView:UIView) {
+    open func removeCustomView(_ mediaView:UIView) {
         if views != nil && !views!.isEmpty{
-            if let index = (views!).indexOf(mediaView) {
-                self.views!.removeAtIndex(index)
+            if let index = (views!).index(of: mediaView) {
+                self.views!.remove(at: index)
             }
         }
         setupLayout(self.scrollViewPageType)
     }
 
-    public func removeAllViews() {
+    open func removeAllViews() {
         views?.removeAll()
         viewControllers?.removeAll()
         setupLayout(self.scrollViewPageType)
     }
     
-    public func setEnableBounces(enableBounces:Bool){
+    open func setEnableBounces(_ enableBounces:Bool){
         self.bounces = enableBounces
     }
     
-    public func setPaging(pagingEnabled:Bool){
+    open func setPaging(_ pagingEnabled:Bool){
         self.enablePaging = pagingEnabled
     }
 
-    public func setScrollViewPageType(value:Int) {
+    open func setScrollViewPageType(_ value:Int) {
         self.scrollViewPageType = getScrollViewPageTypeFromInt(value);
     }
     
     //MARK: Private Functions
     
-    private func initScrollView() {
+    fileprivate func initScrollView() {
         super.delegate = self
         self.viewControllers = []
         self.views = []
-        self.scrollViewPageType = ISScrollViewPageType.ISScrollViewPageHorizontally
+        self.scrollViewPageType = ISScrollViewPageType.isScrollViewPageHorizontally
     }
     
-    private func removeSubviews() {
+    fileprivate func removeSubviews() {
         for view in self.subviews {
             view.removeFromSuperview()
         }
     }
     
-    private func setupLayout (scrollViewPageType:ISScrollViewPageType){
+    fileprivate func setupLayout (_ scrollViewPageType:ISScrollViewPageType){
         
         removeSubviews()
         
@@ -250,32 +279,32 @@ public class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
             
         }
         
-        self.pagingEnabled = enablePaging!
+        self.isPagingEnabled = enablePaging!
         
     }
     
-    private func build(numberOfViews:Int,index:Int,objectView:UIView,scrollViewPageType:ISScrollViewPageType) {
+    fileprivate func build(_ numberOfViews:Int,index:Int,objectView:UIView,scrollViewPageType:ISScrollViewPageType) {
         var frame = self.frame
         let view:UIView = UIView()
-        view.userInteractionEnabled = true
+        view.isUserInteractionEnabled = true
         view.clipsToBounds = true
         
         switch (scrollViewPageType) {
             
-        case .ISScrollViewPageHorizontally:
+        case .isScrollViewPageHorizontally:
             
             frame.origin.x = CGFloat(fillContent == true ? self.frame.size.width * CGFloat(index) : objectView.frame.size.width * CGFloat(index));
             frame.size = fillContent == true ? self.frame.size : objectView.frame.size
             frame.origin.y = 0
             
-            self.contentSize = CGSizeMake(fillContent == true ? self.frame.size.width * CGFloat(numberOfViews) : objectView.frame.size.width * CGFloat(numberOfViews), self.frame.size.height)
+            self.contentSize = CGSize(width: fillContent == true ? self.frame.size.width * CGFloat(numberOfViews) : objectView.frame.size.width * CGFloat(numberOfViews), height: self.frame.size.height)
             
-        case .ISScrollViewPageVertically:
+        case .isScrollViewPageVertically:
             frame.origin.y = CGFloat(fillContent == true ? self.frame.size.height * CGFloat(index) : objectView.frame.size.height * CGFloat(index));
             frame.size = fillContent == true ? self.frame.size : objectView.frame.size
             frame.origin.x = 0
             
-            self.contentSize = CGSizeMake(self.frame.size.width,fillContent == true ? self.frame.size.height * CGFloat(numberOfViews) : objectView.frame.size.height * CGFloat(numberOfViews))
+            self.contentSize = CGSize(width: self.frame.size.width,height: fillContent == true ? self.frame.size.height * CGFloat(numberOfViews) : objectView.frame.size.height * CGFloat(numberOfViews))
         }
         
         view.frame = frame

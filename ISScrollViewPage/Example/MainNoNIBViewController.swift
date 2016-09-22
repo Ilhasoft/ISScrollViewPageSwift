@@ -22,10 +22,10 @@ class MainNoNIBViewController: UIViewController, ISScrollViewPageDelegate {
 
     
     override func loadView() {
-        self.scrollViewPage = ISScrollViewPage(frame: UIScreen.mainScreen().applicationFrame)
+        self.scrollViewPage = ISScrollViewPage(frame: UIScreen.main.applicationFrame)
         
         self.scrollViewPage!.setEnableBounces(false)
-        self.scrollViewPage!.scrollViewPageType = ISScrollViewPageType.ISScrollViewPageVertically
+        self.scrollViewPage!.scrollViewPageType = ISScrollViewPageType.isScrollViewPageVertically
         
         
         let controllers = [FirstViewController(nibName:"FirstViewController",bundle:nil),
@@ -38,7 +38,7 @@ class MainNoNIBViewController: UIViewController, ISScrollViewPageDelegate {
         
     }
     
-    func scrollViewPageDidChanged(scrollViewPage: ISScrollViewPage, index: Int) {
+    func scrollViewPageDidChanged(_ scrollViewPage: ISScrollViewPage, index: Int) {
         print("index : \(index)")
     }
 

@@ -14,11 +14,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var initialViewController:UIViewController?
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         initialViewController  = MainViewController(nibName:"MainViewController",bundle:nil)
         
-        let frame = UIScreen.mainScreen().bounds
+        let frame = UIScreen.main.bounds
         window = UIWindow(frame: frame)
         
 //        window!.rootViewController = MainNoNIBViewController()
