@@ -25,7 +25,7 @@ class MainNoNIBViewController: UIViewController, ISScrollViewPageDelegate {
         self.scrollViewPage = ISScrollViewPage(frame: UIScreen.main.applicationFrame)
         
         self.scrollViewPage!.setEnableBounces(false)
-        self.scrollViewPage!.scrollViewPageType = ISScrollViewPageType.isScrollViewPageVertically
+        self.scrollViewPage!.scrollViewPageType = ISScrollViewPageType.vertically
         
         
         let controllers = [FirstViewController(nibName:"FirstViewController",bundle:nil),
