@@ -18,7 +18,7 @@ class MainViewController: UIViewController , ISScrollViewPageDelegate{
         self.scrollViewPage.scrollViewPageDelegate = self;
         self.scrollViewPage.setEnableBounces(false)
         self.scrollViewPage.setPaging(false)
-        self.scrollViewPage.scrollViewPageType = ISScrollViewPageType.isScrollViewPageHorizontally
+        self.scrollViewPage.scrollViewPageType = ISScrollViewPageType.horizontally
         
         
 //        var controllers = [FirstViewController(nibName:"FirstViewController",bundle:nil),

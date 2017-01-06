@@ -38,8 +38,8 @@ fileprivate func >= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 
 
 @objc public enum ISScrollViewPageType:Int {
-    case isScrollViewPageHorizontally = 1
-    case isScrollViewPageVertically
+    case horizontally = 1
+    case vertically
 }
 
 @objc public protocol ISScrollViewPageDelegate {
@@ -69,11 +69,11 @@ open class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
     open func getScrollViewPageTypeFromInt(_ value:Int) -> ISScrollViewPageType {
         switch(value) {
         case 1:
-            return .isScrollViewPageHorizontally
+            return .horizontally
         case 2:
-            return .isScrollViewPageVertically
+            return .vertically
         default:
-            return .isScrollViewPageHorizontally
+            return .horizontally
         }
     }
     
@@ -113,7 +113,7 @@ open class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
         
         switch (self.scrollViewPageType!) {
             
-        case .isScrollViewPageHorizontally:
+        case .horizontally:
             
             let frame = self.frame.width
             
@@ -123,7 +123,7 @@ open class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
                 index = 0;
             }
             
-        case .isScrollViewPageVertically:
+        case .vertically:
             
             let frame = self.frame.height
             
@@ -159,14 +159,14 @@ open class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
         
         switch(self.scrollViewPageType!){
             
-        case .isScrollViewPageHorizontally:
+        case .horizontally:
             
             let frameWidth = Int(self.frame.width)
             let widthOfContentOffset = index * frameWidth
             
             self.setContentOffset(CGPoint(x: CGFloat(widthOfContentOffset), y: 0), animated: animated)
             
-        case .isScrollViewPageVertically:
+        case .vertically:
             
             let frameHeight = Int(self.frame.height)
             let heightOfContentOffset = index * frameHeight
@@ -243,7 +243,7 @@ open class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
         super.delegate = self
         self.viewControllers = []
         self.views = []
-        self.scrollViewPageType = ISScrollViewPageType.isScrollViewPageHorizontally
+        self.scrollViewPageType = ISScrollViewPageType.horizontally
     }
     
     fileprivate func removeSubviews() {
@@ -291,7 +291,7 @@ open class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
         
         switch (scrollViewPageType) {
             
-        case .isScrollViewPageHorizontally:
+        case .horizontally:
             
             frame.origin.x = CGFloat(fillContent == true ? self.frame.size.width * CGFloat(index) : objectView.frame.size.width * CGFloat(index));
             frame.size = fillContent == true ? self.frame.size : objectView.frame.size
@@ -299,7 +299,7 @@ open class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
             
             self.contentSize = CGSize(width: fillContent == true ? self.frame.size.width * CGFloat(numberOfViews) : objectView.frame.size.width * CGFloat(numberOfViews), height: self.frame.size.height)
             
-        case .isScrollViewPageVertically:
+        case .vertically:
             frame.origin.y = CGFloat(fillContent == true ? self.frame.size.height * CGFloat(index) : objectView.frame.size.height * CGFloat(index));
             frame.size = fillContent == true ? self.frame.size : objectView.frame.size
             frame.origin.x = 0
