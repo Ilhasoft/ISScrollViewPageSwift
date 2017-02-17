@@ -7,35 +7,6 @@
 //
 
 import UIKit
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
-}
-
-fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l > r
-  default:
-    return rhs < lhs
-  }
-}
-
-fileprivate func >= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l >= r
-  default:
-    return !(lhs < rhs)
-  }
-}
-
 
 @objc public enum ISScrollViewPageType:Int {
     case horizontally = 1
@@ -65,7 +36,8 @@ open class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
     var fillContent:Bool?
     open var scrollViewPageType:ISScrollViewPageType!
     var isLoaded:Bool!
-
+    var sizeOfViews:CGFloat = 0
+    
     open func getScrollViewPageTypeFromInt(_ value:Int) -> ISScrollViewPageType {
         switch(value) {
         case 1:
@@ -148,9 +120,9 @@ open class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
     
     open func goToIndex(_ index:Int, animated:Bool){
         
-        let countList = self.viewControllers?.count > 0 ? self.viewControllers?.count : self.views?.count
+        let countList = (self.viewControllers?.count)! > 0 ? self.viewControllers?.count : self.views?.count
         
-        if index >= countList{
+        if index >= countList! {
             
             UIAlertView(title: "", message: "Index \(index) doesn't has any view controller", delegate: self, cancelButtonTitle: "OK").show()
             
@@ -218,7 +190,7 @@ open class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
         }
         setupLayout(self.scrollViewPageType)
     }
-
+    
     open func removeAllViews() {
         views?.removeAll()
         viewControllers?.removeAll()
@@ -232,7 +204,7 @@ open class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
     open func setPaging(_ pagingEnabled:Bool){
         self.enablePaging = pagingEnabled
     }
-
+    
     open func setScrollViewPageType(_ value:Int) {
         self.scrollViewPageType = getScrollViewPageTypeFromInt(value);
     }
@@ -254,6 +226,7 @@ open class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
     
     fileprivate func setupLayout (_ scrollViewPageType:ISScrollViewPageType){
         
+        sizeOfViews = 0
         removeSubviews()
         
         var list:[AnyObject] = []
@@ -290,21 +263,23 @@ open class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
         view.clipsToBounds = true
         
         switch (scrollViewPageType) {
-            
         case .horizontally:
+            sizeOfViews = sizeOfViews + objectView.frame.size.width
             
-            frame.origin.x = CGFloat(fillContent == true ? self.frame.size.width * CGFloat(index) : objectView.frame.size.width * CGFloat(index));
+            frame.origin.x = CGFloat(fillContent == true ? self.frame.size.width * CGFloat(index) : index == 0 ? 0 : sizeOfViews - objectView.frame.size.width);
             frame.size = fillContent == true ? self.frame.size : objectView.frame.size
             frame.origin.y = 0
             
-            self.contentSize = CGSize(width: fillContent == true ? self.frame.size.width * CGFloat(numberOfViews) : objectView.frame.size.width * CGFloat(numberOfViews), height: self.frame.size.height)
+            self.contentSize = CGSize(width: fillContent == true ? self.frame.size.width * CGFloat(numberOfViews) : sizeOfViews, height: self.frame.size.height)
             
         case .vertically:
-            frame.origin.y = CGFloat(fillContent == true ? self.frame.size.height * CGFloat(index) : objectView.frame.size.height * CGFloat(index));
+            sizeOfViews = sizeOfViews + objectView.frame.size.height
+            
+            frame.origin.y = CGFloat(fillContent == true ? self.frame.size.height * CGFloat(index) : index == 0 ? 0 : sizeOfViews - objectView.frame.size.height);
             frame.size = fillContent == true ? self.frame.size : objectView.frame.size
             frame.origin.x = 0
             
-            self.contentSize = CGSize(width: self.frame.size.width,height: fillContent == true ? self.frame.size.height * CGFloat(numberOfViews) : objectView.frame.size.height * CGFloat(numberOfViews))
+            self.contentSize = CGSize(width: self.frame.size.width,height: fillContent == true ? self.frame.size.height * CGFloat(numberOfViews) : sizeOfViews)
         }
         
         view.frame = frame
