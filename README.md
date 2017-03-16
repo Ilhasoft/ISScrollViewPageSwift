@@ -9,13 +9,13 @@ Easy scrollView page viewer implementation written in Swift.
 
 ## Current Version
 
-Version: 0.0.4
+Version: 1.0.0
 
 ## How to install it?
 
 [CocoaPods](http://cocoapods.org) is the easiest way to install ISScrollViewPageSwift. Run ```pod search ISScrollViewPageSwift``` to search for the latest version. Then, copy and paste the ```pod``` line to your ```Podfile```. Your podfile should look like:
 
-```
+```c
 platform :ios, '8.0'
 pod 'ISScrollViewPageSwift'
 ```
@@ -43,8 +43,9 @@ class MainViewController: UIViewController , ISScrollViewPageDelegate{
         override func viewDidLoad() {
                 super.viewDidLoad()
                 self.scrollViewPage.scrollViewPageDelegate = self;
-                self.scrollViewPage.scrollViewPageType = ISScrollViewPageType.ISScrollViewPageVertically
+                self.scrollViewPage.scrollViewPageType = ISScrollViewPageType.vertically
                 self.scrollViewPage.setViewControllers(controllers)
+                // or self.scrollViewPage.setCustomViews()
         }
 }
 ```
@@ -56,27 +57,26 @@ Only override loadView() func and set self.view:
 ```swift
 override func loadView() {
         self.scrollViewPage = ISScrollViewPage(frame: UIScreen.mainScreen().applicationFrame)
-        self.scrollViewPage!.scrollViewPageType = ISScrollViewPageType.ISScrollViewPageVertically
+        self.scrollViewPage!.scrollViewPageType = ISScrollViewPageType.vertically
         self.scrollViewPage!.setViewControllers(controllers)
-	//In Version 0.0.4 you can set UIViews - use setCustomViews method
         self.view = self.scrollViewPage
 }
 ```
 ### Customization
 
 ```
-scrollViewPageType (ISScrollViewPageVertically or ISScrollViewPageType.ISScrollViewPageHorizontally)
-bounces (true or false)
+scrollViewPageType (ISScrollViewPageType.vertically or ISScrollViewPageType.horizontally)
+setEnableBounces (true or false)
+setPaging (true or false)
 ```
 
 ## Requirements
 
 * iOS 8.0+
-* Xcode 6.0
+* Xcode 8.0
 
 ## TODO
-- [ ] Add More Customizations
-- [ ] Some refactorings
+- [ ] Add Padding between views/view controllers
 
 ## Contact
 
