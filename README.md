@@ -73,6 +73,7 @@ setPaging (true or false)
 ## Requirements
 
 * iOS 8.0+
+* swift 3
 * Xcode 8.0
 
 ## TODO
