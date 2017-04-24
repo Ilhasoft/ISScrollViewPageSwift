@@ -21,11 +21,11 @@ import UIKit
 open class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
     
     open var viewControllers:[UIViewController]?
-    open var views:[UIView]?
+    open var views = [UIView]()
     open var scrollViewPageDelegate:ISScrollViewPageDelegate?
     open var count: Int {
         get {
-            let viewsCount = views != nil ? views!.count : 0
+            let viewsCount = views.count
             let controllersCount = viewControllers != nil ? viewControllers!.count : 0
             return viewsCount + controllersCount
         }
@@ -37,7 +37,7 @@ open class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
     open var scrollViewPageType:ISScrollViewPageType!
     var isLoaded:Bool!
     var sizeOfViews:CGFloat = 0
-    
+        
     open func getScrollViewPageTypeFromInt(_ value:Int) -> ISScrollViewPageType {
         switch(value) {
         case 1:
@@ -120,7 +120,7 @@ open class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
     
     open func goToIndex(_ index:Int, animated:Bool){
         
-        let countList = (self.viewControllers?.count)! > 0 ? self.viewControllers?.count : self.views?.count
+        let countList = (self.viewControllers?.count)! > 0 ? self.viewControllers?.count : self.views.count
         
         if index >= countList! {
             
@@ -166,7 +166,7 @@ open class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
     }
     
     open func addCustomView(_ view:UIView) {
-        self.views?.append(view)
+        self.views.append(view)
         setupLayout(self.scrollViewPageType)
     }
     
@@ -176,23 +176,23 @@ open class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
     }
     
     open func removeCustomViewAtIndex(_ index:Int) {
-        if views != nil && !views!.isEmpty{
-            self.views!.remove(at: index)
+        if !views.isEmpty{
+            self.views.remove(at: index)
         }
         setupLayout(self.scrollViewPageType)
     }
     
     open func removeCustomView(_ mediaView:UIView) {
-        if views != nil && !views!.isEmpty{
-            if let index = (views!).index(of: mediaView) {
-                self.views!.remove(at: index)
+        if !views.isEmpty{
+            if let index = (views).index(of: mediaView) {
+                self.views.remove(at: index)
             }
         }
         setupLayout(self.scrollViewPageType)
     }
     
     open func removeAllViews() {
-        views?.removeAll()
+        views.removeAll()
         viewControllers?.removeAll()
         setupLayout(self.scrollViewPageType)
     }
@@ -233,8 +233,8 @@ open class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
         
         if !viewControllers!.isEmpty {
             list = viewControllers!
-        }else if !views!.isEmpty{
-            list = views!
+        }else if !views.isEmpty{
+            list = views
         }else {
             return
         }
