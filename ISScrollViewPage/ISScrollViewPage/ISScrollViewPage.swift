@@ -184,7 +184,7 @@ open class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
     
     open func removeCustomView(_ mediaView:UIView) {
         if !views.isEmpty{
-            if let index = (views).index(of: mediaView) {
+            if let index = (views).firstIndex(of: mediaView) {
                 self.views.remove(at: index)
             }
         }
