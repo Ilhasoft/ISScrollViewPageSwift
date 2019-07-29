@@ -24,9 +24,7 @@ open class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
     open var views = [UIView]()
     open weak var scrollViewPageDelegate: ISScrollViewPageDelegate?
     open var count: Int {
-        let viewsCount = views.count
-        let controllersCount = viewControllers != nil ? viewControllers!.count : 0
-        return viewsCount + controllersCount
+        return views.count + (viewControllers?.count ?? 0)
     }
     var lastIndex = 0
     var enableBouces: Bool?
@@ -97,7 +95,7 @@ open class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
             
             if contentOffset.y != 0 {
                 index = Int(contentOffset.y / frame)
-            } else{
+            } else {
                 index = 0;
             }
             
@@ -229,7 +227,7 @@ open class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
         
         if !viewControllers!.isEmpty {
             list = viewControllers!
-        } else if !views.isEmpty{
+        } else if !views.isEmpty {
             list = views
         } else {
             return
@@ -261,7 +259,7 @@ open class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
         case .horizontally:
             sizeOfViews = sizeOfViews + objectView.frame.size.width
             
-            frame.origin.x = CGFloat(fillContent == true ? self.frame.size.width * CGFloat(index) : index == 0 ? 0 : sizeOfViews - objectView.frame.size.width);
+            frame.origin.x = CGFloat(fillContent == true ? self.frame.size.width * CGFloat(index) : index == 0 ? 0 : sizeOfViews - objectView.frame.size.width)
             frame.size = fillContent == true ? self.frame.size : objectView.frame.size
             frame.origin.y = 0
             
@@ -270,7 +268,7 @@ open class ISScrollViewPage: UIScrollView, UIScrollViewDelegate {
         case .vertically:
             sizeOfViews = sizeOfViews + objectView.frame.size.height
             
-            frame.origin.y = CGFloat(fillContent == true ? self.frame.size.height * CGFloat(index) : index == 0 ? 0 : sizeOfViews - objectView.frame.size.height);
+            frame.origin.y = CGFloat(fillContent == true ? self.frame.size.height * CGFloat(index) : index == 0 ? 0 : sizeOfViews - objectView.frame.size.height)
             frame.size = fillContent == true ? self.frame.size : objectView.frame.size
             frame.origin.x = 0
             

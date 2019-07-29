@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "ISScrollViewPageSwift"
-  s.version      = "1.0.0"
+  s.version      = "1.1.0"
   s.summary      = "Page viewer implementation written in Swift."
 
   s.description  = <<-DESC
